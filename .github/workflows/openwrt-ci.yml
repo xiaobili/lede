@@ -58,12 +58,12 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
+          echo 'src-git UA3F https://github.com/SunBK201/UA3F.git' >> ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Generate configuration file
-        run: make defconfig
+      # - name: Generate configuration file
+      #   run: make defconfig
 
       - name: Download packages
         run: make download -j16
